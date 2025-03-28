@@ -1,17 +1,16 @@
-import React, {Suspense} from 'react'
-import DataTest from "@/components/data-test";
+import React from 'react'
+import sampleData from "@/db/sample-data";
+import ProductList from "@/components/shared/poduct/product-list";
 
 const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
 
 const HomePage = async () => {
   await delay(1000);
-
+  console.log(sampleData)
   return (
-    <div>
-      <Suspense fallback={<p>Loading feed...</p>}>
-        <DataTest/>
-      </Suspense>
-    </div>
+    <>
+        <ProductList data={sampleData.products} title='newest arrivals' limit={4}/>
+    </>
   )
 }
 export default HomePage
