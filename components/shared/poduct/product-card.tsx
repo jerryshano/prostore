@@ -3,8 +3,11 @@ import React from 'react'
 import Link from "next/link";
 import Image from "next/image";
 import ProductPrice from "@/components/shared/poduct/product-price";
+import {Product} from "@/types";
 
-const ProductCard = ({product}: { product: any }) => {
+
+const ProductCard = async ({product}: { product: Product }) => {
+
   return (
     <Card className="w-full max-w-sm">
       <CardHeader className="p-0 items-center">
@@ -22,7 +25,7 @@ const ProductCard = ({product}: { product: any }) => {
         <div className="flex-between gap-4">
           <p>{product.rating} stars</p>
           {product.stock > 0 ? (
-            <ProductPrice value={Number(product.price)} />
+            <ProductPrice value={Number(product.price)}/>
           ) : (<p className="text-destructive">out of stock</p>
           )}
         </div>
